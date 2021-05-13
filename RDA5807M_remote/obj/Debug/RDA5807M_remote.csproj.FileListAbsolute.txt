@@ -1,0 +1,10 @@
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\bin\Debug\RDA5807M_remote.exe.config
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\bin\Debug\RDA5807M_remote.exe
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\bin\Debug\RDA5807M_remote.pdb
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.csprojResolveAssemblyReference.cache
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.MainForm.resources
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.Properties.Resources.resources
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.csproj.GenerateResource.cache
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.csproj.CoreCompileInputs.cache
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.exe
+C:\Users\NXF55627\source\repos\RDA5807M_remote\RDA5807M_remote\obj\Debug\RDA5807M_remote.pdb
