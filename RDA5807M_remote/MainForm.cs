@@ -19,87 +19,106 @@ namespace RDA5807M_remote
         }
 
         private DateTime localDate = DateTime.Now;
-        private SerialPort COMInst = new SerialPort();
+        private COMDevice Device = new COMDevice();
+        private RDA5807M Radio = new RDA5807M();
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             string[] ports = SerialPort.GetPortNames();
             this.COM_combobox.Items.AddRange(ports);
-            this.TxTimeout_textedit.Text = "100";
-            this.RxTimeout_textedit.Text = "100";
-            this.stopbits_combobox.SelectedIndex = 0;
-            this.parity_combobox.SelectedIndex = 0;
         }
 
+        private void VOlumeChanged()
+        {
+            float freq = Int32.Parse(freq_textbox.Text);
+            int volume = Int32.Parse(Vol_textbox.Text);
+            int freqParsed = (int)(freq * 10);
+
+        }
+        private void printlineTimestamped(RichTextBox textbox, string line)
+        {
+            this.localDate = DateTime.Now;
+            textbox.AppendText(localDate.ToString("HH:mm:ss.ff: ", System.Globalization.DateTimeFormatInfo.InvariantInfo));
+            textbox.AppendText(line);
+            textbox.AppendText(Environment.NewLine);
+        }
         private void COMConnectDisconnect_btn_Click(object sender, EventArgs e)
         {
             if (this.COM_combobox.Text != "")
             {
-                if (COMInst.IsOpen == false)
+                if (!Device.isConnected())
                 {
-                    COMInst.PortName = this.COM_combobox.Text;
-                    COMInst.BaudRate = Int32.Parse(this.baudrate_combobox.Text);
-                    COMInst.DataBits = 8;
+                    Device.Connect(this.COM_combobox.Text);
 
-                    switch (this.parity_combobox.Text)
-                    {
-                        case "None":
-                            {
-                                COMInst.Parity = Parity.None;
-                            }
-                        break;
-                        case "Odd":
-                            {
-                                COMInst.Parity = Parity.Odd;
-                            }
-                            break;
-                        case "Even":
-                            {
-                                COMInst.Parity = Parity.Even;
-                            }
-                            break;
-                    }
-                    switch (this.stopbits_combobox.Text)
-                    {
-                        case "One":
-                            {
-                                COMInst.StopBits = StopBits.One;
-                            }
-                            break;
-                        case "Two":
-                            {
-                                COMInst.StopBits = StopBits.Two;
-                            }
-                            break;
-                    }
-
-                    COMInst.ReadTimeout = Int32.Parse(this.RxTimeout_textedit.Text);
-                    COMInst.ReadTimeout = Int32.Parse(this.TxTimeout_textedit.Text);
-                    COMInst.Open();
-
-                    if (this.COMInst.IsOpen == true)
+                    if (Device.isConnected())
                     {
                         this.COMState_label.Text = "Connected";
-                        COMInst.WriteLine("LEDTG");
-                        string response = COMInst.ReadLine();
-                        this.COMUARTmsg_richtextbox.AppendText(localDate.ToString("HH:mm:ss.ff: ", System.Globalization.DateTimeFormatInfo.InvariantInfo));
-                        this.COMUARTmsg_richtextbox.AppendText("LEDTG");
-                        this.COMUARTmsg_richtextbox.AppendText("& RX = " + response);
-                        this.COMUARTmsg_richtextbox.AppendText(Environment.NewLine);
+                        this.printlineTimestamped(COMUARTmsg_richtextbox, "Connected");
                     }
                 }
                 else
                 {
-                    COMInst.Close();
-                    if (this.COMInst.IsOpen == false)
+                    Device.Close();
+                    if (!Device.isConnected())
                     {
                         this.COMState_label.Text = "Disconnected";
+                        this.printlineTimestamped(COMUARTmsg_richtextbox, "Disconnected");
                     }
                 }
-
-
             }
 
+        }
+
+        private void COM_combobox_Clicked(object sender, EventArgs e)
+        {
+
+            for (int index = 0; index < this.COM_combobox.Items.Count; index++)
+            {
+                this.COM_combobox.Items.RemoveAt(index);
+            }
+
+            string[] ports = SerialPort.GetPortNames();
+            this.COM_combobox.Items.AddRange(ports);
+        }
+
+        private void send_btn_Click(object sender, EventArgs e)
+        {
+            int volume = 0;
+            float freq = 0;
+            try
+            {
+                freq = float.Parse(freq_textbox.Text);
+                volume = Int32.Parse(Vol_textbox.Text);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Error: {0}", exception.Message);
+            }
+
+            int freqParsed = (int)(freq *10);
+            Console.WriteLine(freq.ToString());
+            Console.WriteLine(volume.ToString());
+
+            Console.WriteLine(Radio.cmdSetVolume(volume));
+            Console.WriteLine(Radio.cmdSetChannel(freqParsed));
+        }
+
+        private void volume_scrollbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.Type == ScrollEventType.EndScroll)
+            {
+                Vol_textbox.Text = volume_scrollbar.Value.ToString();
+            }
+
+        }
+
+        private void freq_scrollbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.Type == ScrollEventType.EndScroll)
+            {
+                float freq = ((float)(freq_scrollbar.Value)) / 10;
+                freq_textbox.Text = freq.ToString();
+            }
         }
     }
 }

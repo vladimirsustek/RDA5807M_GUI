@@ -158,6 +158,7 @@
             this.RxTimeout_textedit.Name = "RxTimeout_textedit";
             this.RxTimeout_textedit.Size = new System.Drawing.Size(74, 22);
             this.RxTimeout_textedit.TabIndex = 35;
+            this.RxTimeout_textedit.Text = "100";
             // 
             // TxTimeout_textedit
             // 
@@ -165,6 +166,7 @@
             this.TxTimeout_textedit.Name = "TxTimeout_textedit";
             this.TxTimeout_textedit.Size = new System.Drawing.Size(74, 22);
             this.TxTimeout_textedit.TabIndex = 24;
+            this.TxTimeout_textedit.Text = "100";
             // 
             // RxTimeout_label
             // 
@@ -271,6 +273,7 @@
             this.COM_combobox.Name = "COM_combobox";
             this.COM_combobox.Size = new System.Drawing.Size(91, 24);
             this.COM_combobox.TabIndex = 24;
+            this.COM_combobox.Click += new System.EventHandler(this.COM_combobox_Clicked);
             // 
             // RDA_groupbox
             // 
@@ -293,7 +296,7 @@
             this.RDA_groupbox.Controls.Add(this.volume_scrollbar);
             this.RDA_groupbox.Location = new System.Drawing.Point(22, 264);
             this.RDA_groupbox.Name = "RDA_groupbox";
-            this.RDA_groupbox.Size = new System.Drawing.Size(406, 226);
+            this.RDA_groupbox.Size = new System.Drawing.Size(406, 323);
             this.RDA_groupbox.TabIndex = 1;
             this.RDA_groupbox.TabStop = false;
             this.RDA_groupbox.Text = "RDA5807 control";
@@ -389,32 +392,36 @@
             this.freqVal_lab.AutoSize = true;
             this.freqVal_lab.Location = new System.Drawing.Point(327, 77);
             this.freqVal_lab.Name = "freqVal_lab";
-            this.freqVal_lab.Size = new System.Drawing.Size(36, 17);
+            this.freqVal_lab.Size = new System.Drawing.Size(40, 17);
             this.freqVal_lab.TabIndex = 11;
-            this.freqVal_lab.Text = "MHz";
+            this.freqVal_lab.Text = " MHz";
             // 
             // volumeVal_lab
             // 
             this.volumeVal_lab.AutoSize = true;
             this.volumeVal_lab.Location = new System.Drawing.Point(323, 29);
             this.volumeVal_lab.Name = "volumeVal_lab";
-            this.volumeVal_lab.Size = new System.Drawing.Size(46, 17);
+            this.volumeVal_lab.Size = new System.Drawing.Size(50, 17);
             this.volumeVal_lab.TabIndex = 10;
-            this.volumeVal_lab.Text = "val/15";
+            this.volumeVal_lab.Text = " val/15";
             // 
             // freq_textbox
             // 
             this.freq_textbox.Location = new System.Drawing.Point(314, 94);
             this.freq_textbox.Name = "freq_textbox";
+            this.freq_textbox.ReadOnly = true;
             this.freq_textbox.Size = new System.Drawing.Size(74, 22);
             this.freq_textbox.TabIndex = 9;
+            this.freq_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Vol_textbox
             // 
             this.Vol_textbox.Location = new System.Drawing.Point(314, 46);
             this.Vol_textbox.Name = "Vol_textbox";
+            this.Vol_textbox.ReadOnly = true;
             this.Vol_textbox.Size = new System.Drawing.Size(74, 22);
             this.Vol_textbox.TabIndex = 8;
+            this.Vol_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // freqencyInfo_label
             // 
@@ -436,15 +443,15 @@
             // 
             // freq_scrollbar
             // 
-            this.freq_scrollbar.LargeChange = 100;
+            this.freq_scrollbar.LargeChange = 1;
             this.freq_scrollbar.Location = new System.Drawing.Point(26, 94);
-            this.freq_scrollbar.Maximum = 10800;
-            this.freq_scrollbar.Minimum = 8800;
+            this.freq_scrollbar.Maximum = 1080;
+            this.freq_scrollbar.Minimum = 760;
             this.freq_scrollbar.Name = "freq_scrollbar";
             this.freq_scrollbar.Size = new System.Drawing.Size(258, 26);
-            this.freq_scrollbar.SmallChange = 10;
             this.freq_scrollbar.TabIndex = 1;
-            this.freq_scrollbar.Value = 8800;
+            this.freq_scrollbar.Value = 922;
+            this.freq_scrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.freq_scrollbar_Scroll);
             // 
             // volume_scrollbar
             // 
@@ -454,6 +461,8 @@
             this.volume_scrollbar.Name = "volume_scrollbar";
             this.volume_scrollbar.Size = new System.Drawing.Size(258, 26);
             this.volume_scrollbar.TabIndex = 0;
+            this.volume_scrollbar.Value = 7;
+            this.volume_scrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.volume_scrollbar_Scroll);
             // 
             // TxRxEvents_lab
             // 
@@ -507,7 +516,7 @@
             this.send_groupbox.Controls.Add(this.sendOnChange_lab);
             this.send_groupbox.Controls.Add(this.SendOnChange_scrbar);
             this.send_groupbox.Controls.Add(this.sendOnChangeVal_lab);
-            this.send_groupbox.Location = new System.Drawing.Point(22, 514);
+            this.send_groupbox.Location = new System.Drawing.Point(22, 593);
             this.send_groupbox.Name = "send_groupbox";
             this.send_groupbox.Size = new System.Drawing.Size(406, 88);
             this.send_groupbox.TabIndex = 1;
@@ -522,12 +531,13 @@
             this.send_btn.TabIndex = 15;
             this.send_btn.Text = "Send";
             this.send_btn.UseVisualStyleBackColor = true;
+            this.send_btn.Click += new System.EventHandler(this.send_btn_Click);
             // 
             // COMUARTmsg_richtextbox
             // 
             this.COMUARTmsg_richtextbox.Location = new System.Drawing.Point(469, 67);
             this.COMUARTmsg_richtextbox.Name = "COMUARTmsg_richtextbox";
-            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(332, 529);
+            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(332, 608);
             this.COMUARTmsg_richtextbox.TabIndex = 6;
             this.COMUARTmsg_richtextbox.Text = "";
             // 
@@ -535,7 +545,7 @@
             // 
             this.RDSmsg_richtextbox.Location = new System.Drawing.Point(855, 67);
             this.RDSmsg_richtextbox.Name = "RDSmsg_richtextbox";
-            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(332, 529);
+            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(332, 608);
             this.RDSmsg_richtextbox.TabIndex = 7;
             this.RDSmsg_richtextbox.Text = "";
             // 
@@ -543,7 +553,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1226, 629);
+            this.ClientSize = new System.Drawing.Size(1226, 721);
             this.Controls.Add(this.RDSmsg_richtextbox);
             this.Controls.Add(this.COMUARTmsg_richtextbox);
             this.Controls.Add(this.send_groupbox);
