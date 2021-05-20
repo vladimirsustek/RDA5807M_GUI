@@ -197,5 +197,15 @@ namespace RDA5807M_remote
             }
             return msg;
         }
+
+        public string WriteAndReadLine(string line)
+        {
+            string response;
+
+            this.WriteLine(line);
+            response = this.ReadLine();
+
+            return response;
+        }
     }
 }

@@ -6,30 +6,71 @@ using System.Threading.Tasks;
 
 namespace RDA5807M_remote
 {
-    class RDA5807M
+    class RDA5807M : COMDevice
     {
-        public string cmdSetChannel(int freq)
+        private string cmd_init = "RDA5807M_INIT_PRS";
+        private string rsp_init = "RDA5807M_INITIALIZED";
+
+        private string cmd_freq = "RDA5807M_FREQ_SET_";
+        private string rsp_freq = "RDA5807M_FREQ_SET";
+
+        private string cmd_volm = "RDA5807M_VOLM_SET_";
+        private string rsp_volm = "RDA5807M_VOLM_SET";
+
+        public string cmdRDA5807MInitProcess()
         {
-            string cmd = "FREQ" + freq.ToString().PadLeft(4, '0');
-            return cmd;
-        }
-        public string cmdSetVolume(int volume)
-        {
-            string cmd = "VOLM" + volume.ToString().PadLeft(2, '0');
-            return cmd;
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_init);
+                result = "RX: " + result;
+                   
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+
+            return result;
         }
 
-        public string cmdMute()
+        public string cmdRDA5807MSetFreq(int freq)
         {
-            return "MUTE";
+            string result;
+            string strFreq = freq.ToString().PadLeft(4, '0');
+
+            strFreq = cmd_freq + strFreq;
+
+            try
+            {
+                result = this.WriteAndReadLine(strFreq);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
         }
-        public string cmdUnMute()
+
+        public string cmdRDA5807MSetVolume(int vol)
         {
-            return "UNMUTE";
-        }
-        public string cmdGetRSSI()
-        {
-            return "RSSI";
+            string result;
+            string strVolm = vol.ToString().PadLeft(2, '0');
+
+            strVolm = cmd_volm + strVolm;
+
+            try
+            {
+                result = this.WriteAndReadLine(strVolm);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
         }
     }
 }
