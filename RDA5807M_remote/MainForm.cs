@@ -80,7 +80,7 @@ namespace RDA5807M_remote
             this.COM_combobox.Items.AddRange(ports);
         }
 
-        private void send_btn_Click(object sender, EventArgs e)
+        private void send_VolmFreq()
         {
             if (!this.Device.isConnected())
             {
@@ -94,19 +94,26 @@ namespace RDA5807M_remote
                 freq = float.Parse(freq_textbox.Text);
                 volume = Int32.Parse(Vol_textbox.Text);
 
-                rsp = this.Device.cmdRDA5807MSetFreq(((int)(freq*10)));
+                freq *= 100;
+                int intFreq = (int)freq;
+
+                rsp = this.Device.cmdRDA5807MSetsFreq(intFreq);
                 this.printlineTimestamped(COMUARTmsg_richtextbox, rsp);
 
-                Thread.Sleep(1);
+                Thread.Sleep(250);
 
                 rsp = this.Device.cmdRDA5807MSetVolume(volume);
                 this.printlineTimestamped(COMUARTmsg_richtextbox, rsp);
             }
             catch (Exception exception)
             {
-
+                this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
             }
+        }
 
+        private void send_btn_Click(object sender, EventArgs e)
+        {
+            this.send_VolmFreq();
         }
 
         private void volume_scrollbar_Scroll(object sender, ScrollEventArgs e)
@@ -114,6 +121,10 @@ namespace RDA5807M_remote
             if (e.Type == ScrollEventType.EndScroll)
             {
                 this.Vol_textbox.Text = (this.volume_scrollbar.Value).ToString();
+                if (this.SendOnChange_scrbar.Value == 1)
+                {
+                    this.send_VolmFreq();
+                }
 
             }
 
@@ -123,8 +134,42 @@ namespace RDA5807M_remote
         {
             if (e.Type == ScrollEventType.EndScroll)
             {
-                this.freq_textbox.Text = ((float)this.freq_scrollbar.Value / 10).ToString();
+                this.freq_textbox.Text = ((float)this.freq_scrollbar.Value/10).ToString();
+                if (this.SendOnChange_scrbar.Value == 1)
+                {
+                    this.send_VolmFreq();
+                }
+            }
+        }
 
+        private void getRSSI_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.isConnected())
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetRSSI();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void SendOnChange_scrbar_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.Type == ScrollEventType.EndScroll)
+            {
+                if (this.SendOnChange_scrbar.Value == 1)
+                {
+                    this.sendOnChangeVal_lab.Text = "Enabled";
+                }
+                else
+                {
+                    this.sendOnChangeVal_lab.Text = "Disabled";
+                }
             }
         }
     }

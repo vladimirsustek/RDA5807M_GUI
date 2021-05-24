@@ -17,6 +17,8 @@ namespace RDA5807M_remote
         private string cmd_volm = "RDA5807M_VOLM_SET_";
         private string rsp_volm = "RDA5807M_VOLM_SET";
 
+        private string cmd_rssi = "RDA5807M_RSSI_GET";
+
         public string cmdRDA5807MInitProcess()
         {
             string result;
@@ -35,10 +37,10 @@ namespace RDA5807M_remote
             return result;
         }
 
-        public string cmdRDA5807MSetFreq(int freq)
+        public string cmdRDA5807MSetsFreq(int freq)
         {
             string result;
-            string strFreq = freq.ToString().PadLeft(4, '0');
+            string strFreq = freq.ToString().PadLeft(5, '0');
 
             strFreq = cmd_freq + strFreq;
 
@@ -64,6 +66,22 @@ namespace RDA5807M_remote
             try
             {
                 result = this.WriteAndReadLine(strVolm);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
+        }
+
+        public string cmdRDA5807MGetRSSI()
+        {
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_rssi);
                 result = "RX: " + result;
             }
             catch (Exception e)
