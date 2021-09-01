@@ -540,15 +540,15 @@
             // 
             this.COMUARTmsg_richtextbox.Location = new System.Drawing.Point(469, 67);
             this.COMUARTmsg_richtextbox.Name = "COMUARTmsg_richtextbox";
-            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(332, 633);
+            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(354, 633);
             this.COMUARTmsg_richtextbox.TabIndex = 6;
             this.COMUARTmsg_richtextbox.Text = "";
             // 
             // RDSmsg_richtextbox
             // 
-            this.RDSmsg_richtextbox.Location = new System.Drawing.Point(855, 67);
+            this.RDSmsg_richtextbox.Location = new System.Drawing.Point(829, 67);
             this.RDSmsg_richtextbox.Name = "RDSmsg_richtextbox";
-            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(332, 633);
+            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(365, 633);
             this.RDSmsg_richtextbox.TabIndex = 7;
             this.RDSmsg_richtextbox.Text = "";
             // 

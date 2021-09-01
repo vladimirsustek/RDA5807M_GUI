@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Ports;
 
 namespace RDA5807M_remote
 {
     class RDA5807M : COMDevice
     {
-        private string cmd_init = "RDA5807M_INIT_PRS";
-        private string rsp_init = "RDA5807M_INITIALIZED";
+        private const string cmd_init = "DO_INIT\n";
 
-        private string cmd_freq = "RDA5807M_FREQ_SET_";
-        private string rsp_freq = "RDA5807M_FREQ_SET";
+        private const string cmd_freq = "ST_FREQ_";
 
-        private string cmd_volm = "RDA5807M_VOLM_SET_";
-        private string rsp_volm = "RDA5807M_VOLM_SET";
+        private const string cmd_volm = "ST_VOLM_";
 
-        private string cmd_rssi = "RDA5807M_RSSI_GET";
+        private const string cmd_rssi = "GT_RSSI";
+
+        private const int TWO_LINES_RESPONSE = 2;
 
         public string cmdRDA5807MInitProcess()
         {
@@ -25,7 +25,7 @@ namespace RDA5807M_remote
 
             try
             {
-                result = this.WriteAndReadLine(cmd_init);
+                result = this.WriteAndReadLine(cmd_init, TWO_LINES_RESPONSE);
                 result = "RX: " + result;
                    
             }
@@ -46,13 +46,14 @@ namespace RDA5807M_remote
 
             try
             {
-                result = this.WriteAndReadLine(strFreq);
+                result = this.WriteAndReadLine(strFreq, TWO_LINES_RESPONSE);
                 result = "RX: " + result;
             }
             catch (Exception e)
             {
                 result = e.ToString();
             }
+
             return result;
         }
 
@@ -65,7 +66,7 @@ namespace RDA5807M_remote
 
             try
             {
-                result = this.WriteAndReadLine(strVolm);
+                result = this.WriteAndReadLine(strVolm, TWO_LINES_RESPONSE);
                 result = "RX: " + result;
             }
             catch (Exception e)
@@ -81,7 +82,7 @@ namespace RDA5807M_remote
 
             try
             {
-                result = this.WriteAndReadLine(cmd_rssi);
+                result = this.WriteAndReadLine(cmd_rssi, TWO_LINES_RESPONSE);
                 result = "RX: " + result;
             }
             catch (Exception e)

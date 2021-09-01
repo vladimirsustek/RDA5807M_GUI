@@ -44,11 +44,18 @@ namespace RDA5807M_remote
         {
             if (this.COM_combobox.Text != "")
             {
-                if (!this.Device.isConnected())
+                if (!this.Device.IsOpen)
                 {
-                    this.Device.Connect(this.COM_combobox.Text);
+                    this.Device.PortName = this.COM_combobox.Text;
+                    this.Device.BaudRate = Int32.Parse(this.baudrate_combobox.Text);
+                    this.Device.ReadTimeout = Int32.Parse(this.RxTimeout_textedit.Text);
+                    this.Device.WriteTimeout = Int32.Parse(this.TxTimeout_textedit.Text);
+                    this.Device.Parity = this.Device.ParseParity(this.parity_combobox.Text);
+                    this.Device.StopBits = this.Device.ParseStopBits(this.stopbits_combobox.Text);
 
-                    if (this.Device.isConnected())
+                    this.Device.Open();
+
+                    if (this.Device.IsOpen)
                     {
                         string rsp = this.Device.cmdRDA5807MInitProcess();
                         this.COMState_label.Text = "Connected";
@@ -58,7 +65,7 @@ namespace RDA5807M_remote
                 else
                 {
                     this.Device.Close();
-                    if (!Device.isConnected())
+                    if (!Device.IsOpen)
                     {
                         this.COMState_label.Text = "Disconnected";
                         this.printlineTimestamped(COMUARTmsg_richtextbox, "Disconnected");
@@ -82,7 +89,7 @@ namespace RDA5807M_remote
 
         private void send_VolmFreq()
         {
-            if (!this.Device.isConnected())
+            if (!this.Device.IsOpen)
             {
                 return;
             }
@@ -144,7 +151,7 @@ namespace RDA5807M_remote
 
         private void getRSSI_button_Click(object sender, EventArgs e)
         {
-            if (this.Device.isConnected())
+            if (this.Device.IsOpen)
             {
                 try
                 {
