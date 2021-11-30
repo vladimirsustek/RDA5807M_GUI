@@ -21,6 +21,7 @@ namespace RDA5807M_remote
 
         private DateTime localDate = DateTime.Now;
         private RDA5807M Device = new RDA5807M();
+        private int Muted = 0;
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -57,9 +58,8 @@ namespace RDA5807M_remote
 
                     if (this.Device.IsOpen)
                     {
-                        string rsp = this.Device.cmdRDA5807MInitProcess();
                         this.COMState_label.Text = "Connected";
-                        this.printlineTimestamped(COMUARTmsg_richtextbox, rsp);
+                        this.printlineTimestamped(COMUARTmsg_richtextbox, this.Device.PortName + " Connected");
                     }
                 }
                 else
@@ -68,7 +68,7 @@ namespace RDA5807M_remote
                     if (!Device.IsOpen)
                     {
                         this.COMState_label.Text = "Disconnected";
-                        this.printlineTimestamped(COMUARTmsg_richtextbox, "Disconnected");
+                        this.printlineTimestamped(COMUARTmsg_richtextbox, this.Device.PortName + " Disconnected");
                     }
                 }
             }
@@ -176,6 +176,87 @@ namespace RDA5807M_remote
                 else
                 {
                     this.sendOnChangeVal_lab.Text = "Disabled";
+                }
+            }
+        }
+
+        private void getBLKD_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetBLK('D');
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void getBLKC_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetBLK('C');
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void init_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MInitProcess();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MResetProcess();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void mute_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    this.Muted = (1 == this.Muted) ? 0 : 1;
+                    string rsp = this.Device.cmdRDA5807MSetMute(this.Muted);
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
                 }
             }
         }

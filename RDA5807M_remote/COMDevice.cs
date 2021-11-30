@@ -89,7 +89,6 @@ namespace RDA5807M_remote
         {
             string response = "";
 
-            Console.WriteLine(this.PortName);
             this.WriteLine(line);
 
             while(lines > 0)
