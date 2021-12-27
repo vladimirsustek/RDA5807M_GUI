@@ -20,7 +20,7 @@ namespace RDA5807M_remote
         }
 
         private DateTime localDate = DateTime.Now;
-        private RDA5807M Device = new RDA5807M();
+        private rtu_rda5807m Device = new rtu_rda5807m();
         private int Muted = 0;
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -187,7 +187,9 @@ namespace RDA5807M_remote
                 try
                 {
                     string rsp = this.Device.cmdRDA5807MGetBLK('D');
-                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                    string str = this.Device.cmdRDA5807ReadRetString(rsp);
+                    this.RDSmsg_richtextbox.AppendText(str);
+                    //this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
                 }
                 catch (Exception exception)
                 {
@@ -195,20 +197,26 @@ namespace RDA5807M_remote
                 }
             }
         }
-
+        /* TODO: temporary solution */
         private void getBLKC_button_Click(object sender, EventArgs e)
         {
             if (this.Device.IsOpen)
             {
                 try
                 {
+                    string blkb = this.Device.cmdRDA5807MGetBLK('B');
+                    int hexb = this.Device.cmdRDA5807ReadRetHex(blkb);
+                    if (0 == (hexb & 0x2000) && 0 == (hexb & 0x2800)) return;
                     string rsp = this.Device.cmdRDA5807MGetBLK('C');
-                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                    string str = this.Device.cmdRDA5807ReadRetString(rsp);
+                    this.RDSmsg_richtextbox.AppendText(str);
+                    //this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
                 }
                 catch (Exception exception)
                 {
                     this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
                 }
+                getBLKD_button_Click(sender, e);
             }
         }
 
@@ -260,5 +268,98 @@ namespace RDA5807M_remote
                 }
             }
         }
+
+        private void rssi_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetRSSI();
+                    int rssi = this.Device.cmdRDA5807ReadRetInt(rsp);
+                    this.rssi_val_lab.Text = rssi.ToString();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void rdss_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetRDSS();
+                    int rdss = this.Device.cmdRDA5807ReadRetInt(rsp);
+                    this.rdss_val_lab.Text = rdss.ToString();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void rdsr_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetRDSR();
+                    int rdsr = this.Device.cmdRDA5807ReadRetInt(rsp);
+                    this.rdsr_val_lab.Text = rdsr.ToString();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void chst_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetCHST();
+                    int chst = this.Device.cmdRDA5807ReadRetInt(rsp);
+                    this.chst_val_lab.Text = chst.ToString();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
+        private void stro_button_Click(object sender, EventArgs e)
+        {
+            if (this.Device.IsOpen)
+            {
+                try
+                {
+                    string rsp = this.Device.cmdRDA5807MGetSTRO();
+                    int stro = this.Device.cmdRDA5807ReadRetInt(rsp);
+                    this.stro_val_lab.Text = stro.ToString();
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, rsp);
+                }
+                catch (Exception exception)
+                {
+                    this.printlineTimestamped(this.COMUARTmsg_richtextbox, exception.ToString());
+                }
+            }
+        }
+
     }
+
+
 }

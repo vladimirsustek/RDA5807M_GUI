@@ -7,7 +7,7 @@ using System.IO.Ports;
 
 namespace RDA5807M_remote
 {
-    class RDA5807M : COMDevice
+    class rtu_rda5807m : rtu_device
     {
         private const string cmd_init = "DO_INIT";
 
@@ -20,6 +20,14 @@ namespace RDA5807M_remote
         private const string cmd_volm = "ST_VOLM_";
 
         private const string cmd_rssi = "GT_RSSI";
+
+        private const string cmd_rdsr = "GT_RDSR";
+
+        private const string cmd_rdss = "GT_RDSS";
+
+        private const string cmd_stro = "GT_STRO";
+
+        private const string cmd_chst = "GT_CHST";
 
         private const string cmd_blka = "GT_BLKA";
 
@@ -37,6 +45,60 @@ namespace RDA5807M_remote
         public const char BLKC = 'C';
         public const char BLKD = 'D';
 
+        public int cmdRDA5807ReadRetHex(string rsp)
+        {
+            string[] splitted1 = rsp.Split('=');
+            if (splitted1.Length < 2) return -1;
+
+            string[] splitted2 = splitted1[1].Split('x');
+            if (splitted2.Length < 2) return -1;
+
+            int.TryParse(splitted2[1], System.Globalization.NumberStyles.HexNumber, null, out int val);
+            return val;
+
+        }
+        public int cmdRDA5807ReadRetInt(string rsp)
+        {
+            string[] splitted1 = rsp.Split('=');
+            if (splitted1.Length < 2) return -1;
+
+            string[] splitted2 = splitted1[1].Split('x');
+            if (splitted2.Length < 2) return -1;
+
+            int.TryParse(splitted2[1], System.Globalization.NumberStyles.HexNumber, null, out int val);
+            return val;
+        }
+        public string cmdRDA5807ReadRetString(string rsp)
+        {
+            string[] splitted1 = rsp.Split('=');
+            if (splitted1.Length < 2) return "RetStrErr";
+
+            string[] splitted2 = splitted1[1].Split('x');
+            if (splitted2.Length < 2) return "RetStrErr";
+
+            if (splitted2[1].Length != 4) return "RetStrErr";
+
+            char[] arrfirst = { splitted2[1][0], splitted2[1][1] };
+            char[] arrsecond = { splitted2[1][2], splitted2[1][3] };
+
+            string strch1 = new string(arrfirst);
+            string strch2 = new string(arrsecond);
+
+            int.TryParse(strch1, System.Globalization.NumberStyles.HexNumber, null, out int intch1);
+            int.TryParse(strch2, System.Globalization.NumberStyles.HexNumber, null, out int intch2);
+
+            intch1 = (((intch1 >= 'a') && (intch1 <= 'z')) || 
+                     ((intch1 >= 'A') && (intch1 <= 'Z')) || 
+                     ((intch1 >= '0') && (intch1 <= '9')) ? intch1 : ' ');
+
+            intch2 = (((intch2 >= 'a') && (intch2 <= 'z')) ||
+                     ((intch2 >= 'A') && (intch2 <= 'Z')) ||
+                     ((intch2 >= '0') && (intch2 <= '9')) ? intch2 : ' ');
+
+            char[] arrconverted = {(char)(intch1), (char)(intch2)};
+            string retstr = new string(arrconverted);
+            return retstr;
+        }
         public string cmdRDA5807MInitProcess()
         {
             string result;
@@ -179,6 +241,70 @@ namespace RDA5807M_remote
                         break;
                 }
                 result = this.WriteAndReadLine(cmd, TWO_LINES_RESPONSE);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
+        }
+
+        public string cmdRDA5807MGetRDSS()
+        {
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_rdss, TWO_LINES_RESPONSE);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
+        }
+
+        public string cmdRDA5807MGetRDSR()
+        {
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_rdsr, TWO_LINES_RESPONSE);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
+        }
+
+        public string cmdRDA5807MGetSTRO()
+        {
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_stro, TWO_LINES_RESPONSE);
+                result = "RX: " + result;
+            }
+            catch (Exception e)
+            {
+                result = e.ToString();
+            }
+            return result;
+        }
+
+        public string cmdRDA5807MGetCHST()
+        {
+            string result;
+
+            try
+            {
+                result = this.WriteAndReadLine(cmd_chst, TWO_LINES_RESPONSE);
                 result = "RX: " + result;
             }
             catch (Exception e)

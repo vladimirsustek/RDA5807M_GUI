@@ -69,24 +69,24 @@
             this.COMUARTmsg_richtextbox = new System.Windows.Forms.RichTextBox();
             this.RDSmsg_richtextbox = new System.Windows.Forms.RichTextBox();
             this.read_groupbox = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.vScrollBar5 = new System.Windows.Forms.VScrollBar();
-            this.button5 = new System.Windows.Forms.Button();
-            this.vScrollBar4 = new System.Windows.Forms.VScrollBar();
-            this.button4 = new System.Windows.Forms.Button();
-            this.vScrollBar3 = new System.Windows.Forms.VScrollBar();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.vScrollBar2 = new System.Windows.Forms.VScrollBar();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OFF_lab = new System.Windows.Forms.Label();
+            this.ON_lab = new System.Windows.Forms.Label();
+            this.PeriodRead_lab = new System.Windows.Forms.Label();
+            this.chst_val_lab = new System.Windows.Forms.Label();
+            this.stro_val_lab = new System.Windows.Forms.Label();
+            this.rdsr_val_lab = new System.Windows.Forms.Label();
+            this.rdss_val_lab = new System.Windows.Forms.Label();
+            this.rssi_val_lab = new System.Windows.Forms.Label();
+            this.chs_scrollbar = new System.Windows.Forms.VScrollBar();
+            this.chst_button = new System.Windows.Forms.Button();
+            this.str_scrollbar = new System.Windows.Forms.VScrollBar();
+            this.stro_button = new System.Windows.Forms.Button();
+            this.rdsr_scrollbar = new System.Windows.Forms.VScrollBar();
+            this.rdsr_button = new System.Windows.Forms.Button();
+            this.rdss_button = new System.Windows.Forms.Button();
+            this.rds_scrollbar = new System.Windows.Forms.VScrollBar();
+            this.rssi_scrollbar = new System.Windows.Forms.VScrollBar();
+            this.rssi_button = new System.Windows.Forms.Button();
             this.getBLKA_button = new System.Windows.Forms.Button();
             this.getBLKB_button = new System.Windows.Forms.Button();
             this.getBLKC_button = new System.Windows.Forms.Button();
@@ -115,9 +115,11 @@
             this.COM_groupbox.Controls.Add(this.stopbits_combobox);
             this.COM_groupbox.Controls.Add(this.baudrate_combobox);
             this.COM_groupbox.Controls.Add(this.COM_combobox);
-            this.COM_groupbox.Location = new System.Drawing.Point(22, 55);
+            this.COM_groupbox.Location = new System.Drawing.Point(25, 54);
+            this.COM_groupbox.Margin = new System.Windows.Forms.Padding(2);
             this.COM_groupbox.Name = "COM_groupbox";
-            this.COM_groupbox.Size = new System.Drawing.Size(406, 186);
+            this.COM_groupbox.Padding = new System.Windows.Forms.Padding(2);
+            this.COM_groupbox.Size = new System.Drawing.Size(343, 151);
             this.COM_groupbox.TabIndex = 0;
             this.COM_groupbox.TabStop = false;
             this.COM_groupbox.Text = "COM settings";
@@ -125,26 +127,29 @@
             // COMState_label
             // 
             this.COMState_label.AutoSize = true;
-            this.COMState_label.Location = new System.Drawing.Point(267, 156);
+            this.COMState_label.Location = new System.Drawing.Point(227, 127);
+            this.COMState_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.COMState_label.Name = "COMState_label";
-            this.COMState_label.Size = new System.Drawing.Size(66, 17);
+            this.COMState_label.Size = new System.Drawing.Size(53, 13);
             this.COMState_label.TabIndex = 39;
             this.COMState_label.Text = "Unknown";
             // 
             // COMstinfo_label
             // 
             this.COMstinfo_label.AutoSize = true;
-            this.COMstinfo_label.Location = new System.Drawing.Point(209, 156);
+            this.COMstinfo_label.Location = new System.Drawing.Point(184, 127);
+            this.COMstinfo_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.COMstinfo_label.Name = "COMstinfo_label";
-            this.COMstinfo_label.Size = new System.Drawing.Size(45, 17);
+            this.COMstinfo_label.Size = new System.Drawing.Size(35, 13);
             this.COMstinfo_label.TabIndex = 38;
             this.COMstinfo_label.Text = "State:";
             // 
             // COMConnectDisconnect_btn
             // 
-            this.COMConnectDisconnect_btn.Location = new System.Drawing.Point(212, 108);
+            this.COMConnectDisconnect_btn.Location = new System.Drawing.Point(186, 88);
+            this.COMConnectDisconnect_btn.Margin = new System.Windows.Forms.Padding(2);
             this.COMConnectDisconnect_btn.Name = "COMConnectDisconnect_btn";
-            this.COMConnectDisconnect_btn.Size = new System.Drawing.Size(154, 30);
+            this.COMConnectDisconnect_btn.Size = new System.Drawing.Size(116, 24);
             this.COMConnectDisconnect_btn.TabIndex = 16;
             this.COMConnectDisconnect_btn.Text = "Connect/Disconnect";
             this.COMConnectDisconnect_btn.UseVisualStyleBackColor = true;
@@ -153,79 +158,88 @@
             // RxTimeoutUnit_label
             // 
             this.RxTimeoutUnit_label.AutoSize = true;
-            this.RxTimeoutUnit_label.Location = new System.Drawing.Point(371, 70);
+            this.RxTimeoutUnit_label.Location = new System.Drawing.Point(305, 57);
+            this.RxTimeoutUnit_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RxTimeoutUnit_label.Name = "RxTimeoutUnit_label";
-            this.RxTimeoutUnit_label.Size = new System.Drawing.Size(26, 17);
+            this.RxTimeoutUnit_label.Size = new System.Drawing.Size(20, 13);
             this.RxTimeoutUnit_label.TabIndex = 37;
             this.RxTimeoutUnit_label.Text = "ms";
             // 
             // TxTimeoutUnit_label
             // 
             this.TxTimeoutUnit_label.AutoSize = true;
-            this.TxTimeoutUnit_label.Location = new System.Drawing.Point(371, 29);
+            this.TxTimeoutUnit_label.Location = new System.Drawing.Point(305, 24);
+            this.TxTimeoutUnit_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TxTimeoutUnit_label.Name = "TxTimeoutUnit_label";
-            this.TxTimeoutUnit_label.Size = new System.Drawing.Size(26, 17);
+            this.TxTimeoutUnit_label.Size = new System.Drawing.Size(20, 13);
             this.TxTimeoutUnit_label.TabIndex = 36;
             this.TxTimeoutUnit_label.Text = "ms";
             // 
             // RxTimeout_textedit
             // 
-            this.RxTimeout_textedit.Location = new System.Drawing.Point(291, 67);
+            this.RxTimeout_textedit.Location = new System.Drawing.Point(245, 54);
+            this.RxTimeout_textedit.Margin = new System.Windows.Forms.Padding(2);
             this.RxTimeout_textedit.Name = "RxTimeout_textedit";
-            this.RxTimeout_textedit.Size = new System.Drawing.Size(74, 22);
+            this.RxTimeout_textedit.Size = new System.Drawing.Size(56, 20);
             this.RxTimeout_textedit.TabIndex = 35;
             this.RxTimeout_textedit.Text = "100";
             // 
             // TxTimeout_textedit
             // 
-            this.TxTimeout_textedit.Location = new System.Drawing.Point(291, 27);
+            this.TxTimeout_textedit.Location = new System.Drawing.Point(245, 22);
+            this.TxTimeout_textedit.Margin = new System.Windows.Forms.Padding(2);
             this.TxTimeout_textedit.Name = "TxTimeout_textedit";
-            this.TxTimeout_textedit.Size = new System.Drawing.Size(74, 22);
+            this.TxTimeout_textedit.Size = new System.Drawing.Size(56, 20);
             this.TxTimeout_textedit.TabIndex = 24;
             this.TxTimeout_textedit.Text = "100";
             // 
             // RxTimeout_label
             // 
             this.RxTimeout_label.AutoSize = true;
-            this.RxTimeout_label.Location = new System.Drawing.Point(206, 70);
+            this.RxTimeout_label.Location = new System.Drawing.Point(181, 57);
+            this.RxTimeout_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RxTimeout_label.Name = "RxTimeout_label";
-            this.RxTimeout_label.Size = new System.Drawing.Size(79, 17);
+            this.RxTimeout_label.Size = new System.Drawing.Size(61, 13);
             this.RxTimeout_label.TabIndex = 34;
             this.RxTimeout_label.Text = "Rx Timeout";
             // 
             // TxTimeout_label
             // 
             this.TxTimeout_label.AutoSize = true;
-            this.TxTimeout_label.Location = new System.Drawing.Point(206, 30);
+            this.TxTimeout_label.Location = new System.Drawing.Point(181, 24);
+            this.TxTimeout_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TxTimeout_label.Name = "TxTimeout_label";
-            this.TxTimeout_label.Size = new System.Drawing.Size(78, 17);
+            this.TxTimeout_label.Size = new System.Drawing.Size(60, 13);
             this.TxTimeout_label.TabIndex = 32;
             this.TxTimeout_label.Text = "Tx Timeout";
             // 
             // parity_label
             // 
             this.parity_label.AutoSize = true;
-            this.parity_label.Location = new System.Drawing.Point(23, 159);
+            this.parity_label.Location = new System.Drawing.Point(17, 129);
+            this.parity_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.parity_label.Name = "parity_label";
-            this.parity_label.Size = new System.Drawing.Size(44, 17);
+            this.parity_label.Size = new System.Drawing.Size(33, 13);
             this.parity_label.TabIndex = 30;
             this.parity_label.Text = "Parity";
             // 
             // stopbits_label
             // 
             this.stopbits_label.AutoSize = true;
-            this.stopbits_label.Location = new System.Drawing.Point(15, 115);
+            this.stopbits_label.Location = new System.Drawing.Point(11, 93);
+            this.stopbits_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.stopbits_label.Name = "stopbits_label";
-            this.stopbits_label.Size = new System.Drawing.Size(60, 17);
+            this.stopbits_label.Size = new System.Drawing.Size(46, 13);
             this.stopbits_label.TabIndex = 29;
             this.stopbits_label.Text = "StopBits";
             // 
             // baudrate_label
             // 
             this.baudrate_label.AutoSize = true;
-            this.baudrate_label.Location = new System.Drawing.Point(8, 73);
+            this.baudrate_label.Location = new System.Drawing.Point(6, 59);
+            this.baudrate_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.baudrate_label.Name = "baudrate_label";
-            this.baudrate_label.Size = new System.Drawing.Size(71, 17);
+            this.baudrate_label.Size = new System.Drawing.Size(55, 13);
             this.baudrate_label.TabIndex = 28;
             this.baudrate_label.Text = "BaudRate";
             this.baudrate_label.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -233,9 +247,10 @@
             // COM_label
             // 
             this.COM_label.AutoSize = true;
-            this.COM_label.Location = new System.Drawing.Point(20, 33);
+            this.COM_label.Location = new System.Drawing.Point(15, 27);
+            this.COM_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.COM_label.Name = "COM_label";
-            this.COM_label.Size = new System.Drawing.Size(39, 17);
+            this.COM_label.Size = new System.Drawing.Size(31, 13);
             this.COM_label.TabIndex = 24;
             this.COM_label.Text = "COM";
             // 
@@ -246,9 +261,10 @@
             "None",
             "Odd",
             "Even"});
-            this.parity_combobox.Location = new System.Drawing.Point(81, 156);
+            this.parity_combobox.Location = new System.Drawing.Point(80, 127);
+            this.parity_combobox.Margin = new System.Windows.Forms.Padding(2);
             this.parity_combobox.Name = "parity_combobox";
-            this.parity_combobox.Size = new System.Drawing.Size(91, 24);
+            this.parity_combobox.Size = new System.Drawing.Size(69, 21);
             this.parity_combobox.TabIndex = 27;
             // 
             // stopbits_combobox
@@ -257,9 +273,10 @@
             this.stopbits_combobox.Items.AddRange(new object[] {
             "One",
             "Two"});
-            this.stopbits_combobox.Location = new System.Drawing.Point(81, 112);
+            this.stopbits_combobox.Location = new System.Drawing.Point(80, 91);
+            this.stopbits_combobox.Margin = new System.Windows.Forms.Padding(2);
             this.stopbits_combobox.Name = "stopbits_combobox";
-            this.stopbits_combobox.Size = new System.Drawing.Size(91, 24);
+            this.stopbits_combobox.Size = new System.Drawing.Size(69, 21);
             this.stopbits_combobox.TabIndex = 26;
             // 
             // baudrate_combobox
@@ -277,17 +294,19 @@
             "57600",
             "115200",
             "230400"});
-            this.baudrate_combobox.Location = new System.Drawing.Point(81, 70);
+            this.baudrate_combobox.Location = new System.Drawing.Point(80, 57);
+            this.baudrate_combobox.Margin = new System.Windows.Forms.Padding(2);
             this.baudrate_combobox.Name = "baudrate_combobox";
-            this.baudrate_combobox.Size = new System.Drawing.Size(91, 24);
+            this.baudrate_combobox.Size = new System.Drawing.Size(69, 21);
             this.baudrate_combobox.TabIndex = 25;
             // 
             // COM_combobox
             // 
             this.COM_combobox.FormattingEnabled = true;
-            this.COM_combobox.Location = new System.Drawing.Point(81, 30);
+            this.COM_combobox.Location = new System.Drawing.Point(80, 24);
+            this.COM_combobox.Margin = new System.Windows.Forms.Padding(2);
             this.COM_combobox.Name = "COM_combobox";
-            this.COM_combobox.Size = new System.Drawing.Size(91, 24);
+            this.COM_combobox.Size = new System.Drawing.Size(69, 21);
             this.COM_combobox.TabIndex = 24;
             this.COM_combobox.Click += new System.EventHandler(this.COM_combobox_Clicked);
             // 
@@ -308,18 +327,21 @@
             this.RDA_groupbox.Controls.Add(this.volume_label);
             this.RDA_groupbox.Controls.Add(this.freq_scrollbar);
             this.RDA_groupbox.Controls.Add(this.volume_scrollbar);
-            this.RDA_groupbox.Location = new System.Drawing.Point(22, 247);
+            this.RDA_groupbox.Location = new System.Drawing.Point(25, 210);
+            this.RDA_groupbox.Margin = new System.Windows.Forms.Padding(2);
             this.RDA_groupbox.Name = "RDA_groupbox";
-            this.RDA_groupbox.Size = new System.Drawing.Size(406, 298);
+            this.RDA_groupbox.Padding = new System.Windows.Forms.Padding(2);
+            this.RDA_groupbox.Size = new System.Drawing.Size(343, 242);
             this.RDA_groupbox.TabIndex = 1;
             this.RDA_groupbox.TabStop = false;
             this.RDA_groupbox.Text = "RDA5807 control";
             // 
             // mute_button
             // 
-            this.mute_button.Location = new System.Drawing.Point(34, 252);
+            this.mute_button.Location = new System.Drawing.Point(26, 205);
+            this.mute_button.Margin = new System.Windows.Forms.Padding(2);
             this.mute_button.Name = "mute_button";
-            this.mute_button.Size = new System.Drawing.Size(144, 26);
+            this.mute_button.Size = new System.Drawing.Size(108, 21);
             this.mute_button.TabIndex = 18;
             this.mute_button.Text = "Mute";
             this.mute_button.UseVisualStyleBackColor = true;
@@ -327,9 +349,10 @@
             // 
             // reset_button
             // 
-            this.reset_button.Location = new System.Drawing.Point(220, 48);
+            this.reset_button.Location = new System.Drawing.Point(188, 38);
+            this.reset_button.Margin = new System.Windows.Forms.Padding(2);
             this.reset_button.Name = "reset_button";
-            this.reset_button.Size = new System.Drawing.Size(144, 26);
+            this.reset_button.Size = new System.Drawing.Size(108, 21);
             this.reset_button.TabIndex = 17;
             this.reset_button.Text = "Reset";
             this.reset_button.UseVisualStyleBackColor = true;
@@ -337,9 +360,10 @@
             // 
             // init_button
             // 
-            this.init_button.Location = new System.Drawing.Point(34, 48);
+            this.init_button.Location = new System.Drawing.Point(26, 39);
+            this.init_button.Margin = new System.Windows.Forms.Padding(2);
             this.init_button.Name = "init_button";
-            this.init_button.Size = new System.Drawing.Size(144, 26);
+            this.init_button.Size = new System.Drawing.Size(108, 21);
             this.init_button.TabIndex = 16;
             this.init_button.Text = "Initialize";
             this.init_button.UseVisualStyleBackColor = true;
@@ -348,17 +372,19 @@
             // sendOnChange_lab
             // 
             this.sendOnChange_lab.AutoSize = true;
-            this.sendOnChange_lab.Location = new System.Drawing.Point(273, 205);
+            this.sendOnChange_lab.Location = new System.Drawing.Point(228, 166);
+            this.sendOnChange_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sendOnChange_lab.Name = "sendOnChange_lab";
-            this.sendOnChange_lab.Size = new System.Drawing.Size(112, 17);
+            this.sendOnChange_lab.Size = new System.Drawing.Size(86, 13);
             this.sendOnChange_lab.TabIndex = 13;
             this.sendOnChange_lab.Text = "Send on change";
             // 
             // send_btn
             // 
-            this.send_btn.Location = new System.Drawing.Point(34, 205);
+            this.send_btn.Location = new System.Drawing.Point(26, 167);
+            this.send_btn.Margin = new System.Windows.Forms.Padding(2);
             this.send_btn.Name = "send_btn";
-            this.send_btn.Size = new System.Drawing.Size(144, 26);
+            this.send_btn.Size = new System.Drawing.Size(108, 21);
             this.send_btn.TabIndex = 15;
             this.send_btn.Text = "Send (Vol, Freq)";
             this.send_btn.UseVisualStyleBackColor = true;
@@ -367,95 +393,102 @@
             // freqVal_lab
             // 
             this.freqVal_lab.AutoSize = true;
-            this.freqVal_lab.Location = new System.Drawing.Point(324, 142);
+            this.freqVal_lab.Location = new System.Drawing.Point(266, 114);
+            this.freqVal_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.freqVal_lab.Name = "freqVal_lab";
-            this.freqVal_lab.Size = new System.Drawing.Size(40, 17);
+            this.freqVal_lab.Size = new System.Drawing.Size(32, 13);
             this.freqVal_lab.TabIndex = 11;
             this.freqVal_lab.Text = " MHz";
             // 
             // SendOnChange_scrbar
             // 
             this.SendOnChange_scrbar.LargeChange = 1;
-            this.SendOnChange_scrbar.Location = new System.Drawing.Point(276, 222);
+            this.SendOnChange_scrbar.Location = new System.Drawing.Point(230, 179);
             this.SendOnChange_scrbar.Maximum = 1;
             this.SendOnChange_scrbar.Name = "SendOnChange_scrbar";
-            this.SendOnChange_scrbar.Size = new System.Drawing.Size(109, 26);
+            this.SendOnChange_scrbar.Size = new System.Drawing.Size(82, 26);
             this.SendOnChange_scrbar.TabIndex = 12;
             this.SendOnChange_scrbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SendOnChange_scrbar_Scroll);
             // 
             // volumeVal_lab
             // 
             this.volumeVal_lab.AutoSize = true;
-            this.volumeVal_lab.Location = new System.Drawing.Point(320, 94);
+            this.volumeVal_lab.Location = new System.Drawing.Point(263, 75);
+            this.volumeVal_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.volumeVal_lab.Name = "volumeVal_lab";
-            this.volumeVal_lab.Size = new System.Drawing.Size(50, 17);
+            this.volumeVal_lab.Size = new System.Drawing.Size(41, 13);
             this.volumeVal_lab.TabIndex = 10;
             this.volumeVal_lab.Text = " val/15";
             // 
             // sendOnChangeVal_lab
             // 
             this.sendOnChangeVal_lab.AutoSize = true;
-            this.sendOnChangeVal_lab.Location = new System.Drawing.Point(296, 252);
+            this.sendOnChangeVal_lab.Location = new System.Drawing.Point(245, 204);
+            this.sendOnChangeVal_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sendOnChangeVal_lab.Name = "sendOnChangeVal_lab";
-            this.sendOnChangeVal_lab.Size = new System.Drawing.Size(63, 17);
+            this.sendOnChangeVal_lab.Size = new System.Drawing.Size(48, 13);
             this.sendOnChangeVal_lab.TabIndex = 14;
             this.sendOnChangeVal_lab.Text = "Disabled";
             // 
             // freq_textbox
             // 
-            this.freq_textbox.Location = new System.Drawing.Point(311, 159);
+            this.freq_textbox.Location = new System.Drawing.Point(256, 128);
+            this.freq_textbox.Margin = new System.Windows.Forms.Padding(2);
             this.freq_textbox.Name = "freq_textbox";
             this.freq_textbox.ReadOnly = true;
-            this.freq_textbox.Size = new System.Drawing.Size(74, 22);
+            this.freq_textbox.Size = new System.Drawing.Size(56, 20);
             this.freq_textbox.TabIndex = 9;
             this.freq_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Vol_textbox
             // 
-            this.Vol_textbox.Location = new System.Drawing.Point(311, 111);
+            this.Vol_textbox.Location = new System.Drawing.Point(256, 89);
+            this.Vol_textbox.Margin = new System.Windows.Forms.Padding(2);
             this.Vol_textbox.Name = "Vol_textbox";
             this.Vol_textbox.ReadOnly = true;
-            this.Vol_textbox.Size = new System.Drawing.Size(74, 22);
+            this.Vol_textbox.Size = new System.Drawing.Size(56, 20);
             this.Vol_textbox.TabIndex = 8;
             this.Vol_textbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // freqencyInfo_label
             // 
             this.freqencyInfo_label.AutoSize = true;
-            this.freqencyInfo_label.Location = new System.Drawing.Point(103, 142);
+            this.freqencyInfo_label.Location = new System.Drawing.Point(77, 115);
+            this.freqencyInfo_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.freqencyInfo_label.Name = "freqencyInfo_label";
-            this.freqencyInfo_label.Size = new System.Drawing.Size(75, 17);
+            this.freqencyInfo_label.Size = new System.Drawing.Size(57, 13);
             this.freqencyInfo_label.TabIndex = 7;
             this.freqencyInfo_label.Text = "Frequency";
             // 
             // volume_label
             // 
             this.volume_label.AutoSize = true;
-            this.volume_label.Location = new System.Drawing.Point(114, 94);
+            this.volume_label.Location = new System.Drawing.Point(86, 76);
+            this.volume_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.volume_label.Name = "volume_label";
-            this.volume_label.Size = new System.Drawing.Size(55, 17);
+            this.volume_label.Size = new System.Drawing.Size(42, 13);
             this.volume_label.TabIndex = 6;
             this.volume_label.Text = "Volume";
             // 
             // freq_scrollbar
             // 
             this.freq_scrollbar.LargeChange = 1;
-            this.freq_scrollbar.Location = new System.Drawing.Point(20, 159);
+            this.freq_scrollbar.Location = new System.Drawing.Point(15, 129);
             this.freq_scrollbar.Maximum = 1080;
             this.freq_scrollbar.Minimum = 760;
             this.freq_scrollbar.Name = "freq_scrollbar";
-            this.freq_scrollbar.Size = new System.Drawing.Size(258, 26);
+            this.freq_scrollbar.Size = new System.Drawing.Size(214, 26);
             this.freq_scrollbar.TabIndex = 1;
-            this.freq_scrollbar.Value = 922;
+            this.freq_scrollbar.Value = 892;
             this.freq_scrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.freq_scrollbar_Scroll);
             // 
             // volume_scrollbar
             // 
             this.volume_scrollbar.LargeChange = 1;
-            this.volume_scrollbar.Location = new System.Drawing.Point(23, 111);
+            this.volume_scrollbar.Location = new System.Drawing.Point(17, 90);
             this.volume_scrollbar.Maximum = 15;
             this.volume_scrollbar.Name = "volume_scrollbar";
-            this.volume_scrollbar.Size = new System.Drawing.Size(255, 26);
+            this.volume_scrollbar.Size = new System.Drawing.Size(212, 26);
             this.volume_scrollbar.TabIndex = 0;
             this.volume_scrollbar.Value = 7;
             this.volume_scrollbar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.volume_scrollbar_Scroll);
@@ -463,239 +496,276 @@
             // TxRxEvents_lab
             // 
             this.TxRxEvents_lab.AutoSize = true;
-            this.TxRxEvents_lab.Location = new System.Drawing.Point(526, 35);
+            this.TxRxEvents_lab.Location = new System.Drawing.Point(454, 28);
+            this.TxRxEvents_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TxRxEvents_lab.Name = "TxRxEvents_lab";
-            this.TxRxEvents_lab.Size = new System.Drawing.Size(194, 17);
+            this.TxRxEvents_lab.Size = new System.Drawing.Size(151, 13);
             this.TxRxEvents_lab.TabIndex = 4;
             this.TxRxEvents_lab.Text = "COM events and UART TxRx ";
             // 
             // RDSmsg_lab
             // 
             this.RDSmsg_lab.AutoSize = true;
-            this.RDSmsg_lab.Location = new System.Drawing.Point(958, 35);
+            this.RDSmsg_lab.Location = new System.Drawing.Point(778, 28);
+            this.RDSmsg_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.RDSmsg_lab.Name = "RDSmsg_lab";
-            this.RDSmsg_lab.Size = new System.Drawing.Size(105, 17);
+            this.RDSmsg_lab.Size = new System.Drawing.Size(80, 13);
             this.RDSmsg_lab.TabIndex = 5;
             this.RDSmsg_lab.Text = "RDS messages";
             // 
             // COMUARTmsg_richtextbox
             // 
-            this.COMUARTmsg_richtextbox.Location = new System.Drawing.Point(469, 67);
+            this.COMUARTmsg_richtextbox.Location = new System.Drawing.Point(402, 59);
+            this.COMUARTmsg_richtextbox.Margin = new System.Windows.Forms.Padding(2);
             this.COMUARTmsg_richtextbox.Name = "COMUARTmsg_richtextbox";
-            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(353, 707);
+            this.COMUARTmsg_richtextbox.Size = new System.Drawing.Size(307, 582);
             this.COMUARTmsg_richtextbox.TabIndex = 6;
             this.COMUARTmsg_richtextbox.Text = "";
             // 
             // RDSmsg_richtextbox
             // 
-            this.RDSmsg_richtextbox.Location = new System.Drawing.Point(828, 67);
+            this.RDSmsg_richtextbox.Location = new System.Drawing.Point(731, 59);
+            this.RDSmsg_richtextbox.Margin = new System.Windows.Forms.Padding(2);
             this.RDSmsg_richtextbox.Name = "RDSmsg_richtextbox";
-            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(365, 707);
+            this.RDSmsg_richtextbox.Size = new System.Drawing.Size(330, 582);
             this.RDSmsg_richtextbox.TabIndex = 7;
             this.RDSmsg_richtextbox.Text = "";
             // 
             // read_groupbox
             // 
-            this.read_groupbox.Controls.Add(this.label8);
-            this.read_groupbox.Controls.Add(this.label7);
-            this.read_groupbox.Controls.Add(this.label6);
-            this.read_groupbox.Controls.Add(this.label5);
-            this.read_groupbox.Controls.Add(this.label4);
-            this.read_groupbox.Controls.Add(this.label3);
-            this.read_groupbox.Controls.Add(this.label2);
-            this.read_groupbox.Controls.Add(this.label1);
-            this.read_groupbox.Controls.Add(this.vScrollBar5);
-            this.read_groupbox.Controls.Add(this.button5);
-            this.read_groupbox.Controls.Add(this.vScrollBar4);
-            this.read_groupbox.Controls.Add(this.button4);
-            this.read_groupbox.Controls.Add(this.vScrollBar3);
-            this.read_groupbox.Controls.Add(this.button3);
-            this.read_groupbox.Controls.Add(this.button2);
-            this.read_groupbox.Controls.Add(this.vScrollBar2);
-            this.read_groupbox.Controls.Add(this.vScrollBar1);
-            this.read_groupbox.Controls.Add(this.button1);
-            this.read_groupbox.Location = new System.Drawing.Point(33, 578);
+            this.read_groupbox.Controls.Add(this.OFF_lab);
+            this.read_groupbox.Controls.Add(this.ON_lab);
+            this.read_groupbox.Controls.Add(this.PeriodRead_lab);
+            this.read_groupbox.Controls.Add(this.chst_val_lab);
+            this.read_groupbox.Controls.Add(this.stro_val_lab);
+            this.read_groupbox.Controls.Add(this.rdsr_val_lab);
+            this.read_groupbox.Controls.Add(this.rdss_val_lab);
+            this.read_groupbox.Controls.Add(this.rssi_val_lab);
+            this.read_groupbox.Controls.Add(this.chs_scrollbar);
+            this.read_groupbox.Controls.Add(this.chst_button);
+            this.read_groupbox.Controls.Add(this.str_scrollbar);
+            this.read_groupbox.Controls.Add(this.stro_button);
+            this.read_groupbox.Controls.Add(this.rdsr_scrollbar);
+            this.read_groupbox.Controls.Add(this.rdsr_button);
+            this.read_groupbox.Controls.Add(this.rdss_button);
+            this.read_groupbox.Controls.Add(this.rds_scrollbar);
+            this.read_groupbox.Controls.Add(this.rssi_scrollbar);
+            this.read_groupbox.Controls.Add(this.rssi_button);
+            this.read_groupbox.Location = new System.Drawing.Point(25, 470);
+            this.read_groupbox.Margin = new System.Windows.Forms.Padding(2);
             this.read_groupbox.Name = "read_groupbox";
-            this.read_groupbox.Size = new System.Drawing.Size(406, 196);
+            this.read_groupbox.Padding = new System.Windows.Forms.Padding(2);
+            this.read_groupbox.Size = new System.Drawing.Size(343, 171);
             this.read_groupbox.TabIndex = 24;
             this.read_groupbox.TabStop = false;
             this.read_groupbox.Text = "Read control";
             // 
-            // label8
+            // OFF_lab
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(287, 151);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 17);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "OFF";
+            this.OFF_lab.AutoSize = true;
+            this.OFF_lab.Location = new System.Drawing.Point(290, 136);
+            this.OFF_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.OFF_lab.Name = "OFF_lab";
+            this.OFF_lab.Size = new System.Drawing.Size(27, 13);
+            this.OFF_lab.TabIndex = 40;
+            this.OFF_lab.Text = "OFF";
             // 
-            // label7
+            // ON_lab
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(285, 96);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 17);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "ON";
+            this.ON_lab.AutoSize = true;
+            this.ON_lab.Location = new System.Drawing.Point(291, 67);
+            this.ON_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ON_lab.Name = "ON_lab";
+            this.ON_lab.Size = new System.Drawing.Size(23, 13);
+            this.ON_lab.TabIndex = 39;
+            this.ON_lab.Text = "ON";
             // 
-            // label6
+            // PeriodRead_lab
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(289, 122);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 17);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Periodic reading";
+            this.PeriodRead_lab.AutoSize = true;
+            this.PeriodRead_lab.Location = new System.Drawing.Point(290, 100);
+            this.PeriodRead_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PeriodRead_lab.Name = "PeriodRead_lab";
+            this.PeriodRead_lab.Size = new System.Drawing.Size(45, 13);
+            this.PeriodRead_lab.TabIndex = 38;
+            this.PeriodRead_lab.Text = "Periodic";
             // 
-            // label5
+            // chst_val_lab
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(262, 166);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 17);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "x";
+            this.chst_val_lab.AutoSize = true;
+            this.chst_val_lab.Location = new System.Drawing.Point(251, 136);
+            this.chst_val_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.chst_val_lab.Name = "chst_val_lab";
+            this.chst_val_lab.Size = new System.Drawing.Size(12, 13);
+            this.chst_val_lab.TabIndex = 37;
+            this.chst_val_lab.Text = "x";
             // 
-            // label4
+            // stro_val_lab
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(205, 166);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 17);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "x";
+            this.stro_val_lab.AutoSize = true;
+            this.stro_val_lab.Location = new System.Drawing.Point(194, 136);
+            this.stro_val_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.stro_val_lab.Name = "stro_val_lab";
+            this.stro_val_lab.Size = new System.Drawing.Size(12, 13);
+            this.stro_val_lab.TabIndex = 36;
+            this.stro_val_lab.Text = "x";
             // 
-            // label3
+            // rdsr_val_lab
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(141, 166);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(14, 17);
-            this.label3.TabIndex = 35;
-            this.label3.Text = "x";
+            this.rdsr_val_lab.AutoSize = true;
+            this.rdsr_val_lab.Location = new System.Drawing.Point(139, 136);
+            this.rdsr_val_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.rdsr_val_lab.Name = "rdsr_val_lab";
+            this.rdsr_val_lab.Size = new System.Drawing.Size(12, 13);
+            this.rdsr_val_lab.TabIndex = 35;
+            this.rdsr_val_lab.Text = "x";
             // 
-            // label2
+            // rdss_val_lab
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 166);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 17);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "x";
+            this.rdss_val_lab.AutoSize = true;
+            this.rdss_val_lab.Location = new System.Drawing.Point(84, 136);
+            this.rdss_val_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.rdss_val_lab.Name = "rdss_val_lab";
+            this.rdss_val_lab.Size = new System.Drawing.Size(12, 13);
+            this.rdss_val_lab.TabIndex = 34;
+            this.rdss_val_lab.Text = "x";
             // 
-            // label1
+            // rssi_val_lab
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 166);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "xx";
+            this.rssi_val_lab.AutoSize = true;
+            this.rssi_val_lab.Location = new System.Drawing.Point(25, 136);
+            this.rssi_val_lab.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.rssi_val_lab.Name = "rssi_val_lab";
+            this.rssi_val_lab.Size = new System.Drawing.Size(17, 13);
+            this.rssi_val_lab.TabIndex = 19;
+            this.rssi_val_lab.Text = "xx";
             // 
-            // vScrollBar5
+            // chs_scrollbar
             // 
-            this.vScrollBar5.Location = new System.Drawing.Point(257, 79);
-            this.vScrollBar5.Name = "vScrollBar5";
-            this.vScrollBar5.Size = new System.Drawing.Size(21, 89);
-            this.vScrollBar5.TabIndex = 33;
+            this.chs_scrollbar.LargeChange = 1;
+            this.chs_scrollbar.Location = new System.Drawing.Point(229, 64);
+            this.chs_scrollbar.Maximum = 1;
+            this.chs_scrollbar.Name = "chs_scrollbar";
+            this.chs_scrollbar.Size = new System.Drawing.Size(54, 72);
+            this.chs_scrollbar.TabIndex = 33;
             // 
-            // button5
+            // chst_button
             // 
-            this.button5.Location = new System.Drawing.Point(240, 50);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(53, 26);
-            this.button5.TabIndex = 32;
-            this.button5.Text = "CHST";
-            this.button5.UseVisualStyleBackColor = true;
+            this.chst_button.Location = new System.Drawing.Point(229, 42);
+            this.chst_button.Margin = new System.Windows.Forms.Padding(2);
+            this.chst_button.Name = "chst_button";
+            this.chst_button.Size = new System.Drawing.Size(56, 21);
+            this.chst_button.TabIndex = 32;
+            this.chst_button.Text = "CHST";
+            this.chst_button.UseVisualStyleBackColor = true;
+            this.chst_button.Click += new System.EventHandler(this.chst_button_Click);
             // 
-            // vScrollBar4
+            // str_scrollbar
             // 
-            this.vScrollBar4.Location = new System.Drawing.Point(201, 79);
-            this.vScrollBar4.Name = "vScrollBar4";
-            this.vScrollBar4.Size = new System.Drawing.Size(21, 89);
-            this.vScrollBar4.TabIndex = 31;
+            this.str_scrollbar.LargeChange = 1;
+            this.str_scrollbar.Location = new System.Drawing.Point(173, 64);
+            this.str_scrollbar.Maximum = 1;
+            this.str_scrollbar.Name = "str_scrollbar";
+            this.str_scrollbar.Size = new System.Drawing.Size(54, 72);
+            this.str_scrollbar.TabIndex = 31;
             // 
-            // button4
+            // stro_button
             // 
-            this.button4.Location = new System.Drawing.Point(184, 50);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(57, 26);
-            this.button4.TabIndex = 30;
-            this.button4.Text = "STRO";
-            this.button4.UseVisualStyleBackColor = true;
+            this.stro_button.Location = new System.Drawing.Point(173, 42);
+            this.stro_button.Margin = new System.Windows.Forms.Padding(2);
+            this.stro_button.Name = "stro_button";
+            this.stro_button.Size = new System.Drawing.Size(56, 21);
+            this.stro_button.TabIndex = 30;
+            this.stro_button.Text = "STRO";
+            this.stro_button.UseVisualStyleBackColor = true;
+            this.stro_button.Click += new System.EventHandler(this.stro_button_Click);
             // 
-            // vScrollBar3
+            // rdsr_scrollbar
             // 
-            this.vScrollBar3.Location = new System.Drawing.Point(143, 79);
-            this.vScrollBar3.Name = "vScrollBar3";
-            this.vScrollBar3.Size = new System.Drawing.Size(21, 89);
-            this.vScrollBar3.TabIndex = 29;
+            this.rdsr_scrollbar.LargeChange = 1;
+            this.rdsr_scrollbar.Location = new System.Drawing.Point(118, 64);
+            this.rdsr_scrollbar.Maximum = 1;
+            this.rdsr_scrollbar.Name = "rdsr_scrollbar";
+            this.rdsr_scrollbar.Size = new System.Drawing.Size(54, 72);
+            this.rdsr_scrollbar.TabIndex = 29;
             // 
-            // button3
+            // rdsr_button
             // 
-            this.button3.Location = new System.Drawing.Point(123, 50);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(62, 26);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "RDSR";
-            this.button3.UseVisualStyleBackColor = true;
+            this.rdsr_button.Location = new System.Drawing.Point(117, 42);
+            this.rdsr_button.Margin = new System.Windows.Forms.Padding(2);
+            this.rdsr_button.Name = "rdsr_button";
+            this.rdsr_button.Size = new System.Drawing.Size(56, 21);
+            this.rdsr_button.TabIndex = 28;
+            this.rdsr_button.Text = "RDSR";
+            this.rdsr_button.UseVisualStyleBackColor = true;
+            this.rdsr_button.Click += new System.EventHandler(this.rdsr_button_Click);
             // 
-            // button2
+            // rdss_button
             // 
-            this.button2.Location = new System.Drawing.Point(65, 50);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 26);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "RDSS";
-            this.button2.UseVisualStyleBackColor = true;
+            this.rdss_button.Location = new System.Drawing.Point(61, 42);
+            this.rdss_button.Margin = new System.Windows.Forms.Padding(2);
+            this.rdss_button.Name = "rdss_button";
+            this.rdss_button.Size = new System.Drawing.Size(56, 21);
+            this.rdss_button.TabIndex = 27;
+            this.rdss_button.Text = "RDSS";
+            this.rdss_button.UseVisualStyleBackColor = true;
+            this.rdss_button.Click += new System.EventHandler(this.rdss_button_Click);
             // 
-            // vScrollBar2
+            // rds_scrollbar
             // 
-            this.vScrollBar2.Location = new System.Drawing.Point(85, 79);
-            this.vScrollBar2.Name = "vScrollBar2";
-            this.vScrollBar2.Size = new System.Drawing.Size(21, 89);
-            this.vScrollBar2.TabIndex = 21;
+            this.rds_scrollbar.LargeChange = 1;
+            this.rds_scrollbar.Location = new System.Drawing.Point(62, 64);
+            this.rds_scrollbar.Maximum = 1;
+            this.rds_scrollbar.Name = "rds_scrollbar";
+            this.rds_scrollbar.Size = new System.Drawing.Size(54, 72);
+            this.rds_scrollbar.TabIndex = 21;
             // 
-            // vScrollBar1
+            // rssi_scrollbar
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(28, 79);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 89);
-            this.vScrollBar1.TabIndex = 20;
+            this.rssi_scrollbar.LargeChange = 1;
+            this.rssi_scrollbar.Location = new System.Drawing.Point(6, 64);
+            this.rssi_scrollbar.Maximum = 1;
+            this.rssi_scrollbar.Name = "rssi_scrollbar";
+            this.rssi_scrollbar.Size = new System.Drawing.Size(54, 72);
+            this.rssi_scrollbar.TabIndex = 20;
             // 
-            // button1
+            // rssi_button
             // 
-            this.button1.Location = new System.Drawing.Point(6, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(59, 26);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "RSSI";
-            this.button1.UseVisualStyleBackColor = true;
+            this.rssi_button.Location = new System.Drawing.Point(5, 42);
+            this.rssi_button.Margin = new System.Windows.Forms.Padding(2);
+            this.rssi_button.Name = "rssi_button";
+            this.rssi_button.Size = new System.Drawing.Size(56, 21);
+            this.rssi_button.TabIndex = 19;
+            this.rssi_button.Text = "RSSI";
+            this.rssi_button.UseVisualStyleBackColor = true;
+            this.rssi_button.Click += new System.EventHandler(this.rssi_button_Click);
             // 
             // getBLKA_button
             // 
-            this.getBLKA_button.Location = new System.Drawing.Point(1312, 67);
+            this.getBLKA_button.Location = new System.Drawing.Point(1076, 54);
+            this.getBLKA_button.Margin = new System.Windows.Forms.Padding(2);
             this.getBLKA_button.Name = "getBLKA_button";
-            this.getBLKA_button.Size = new System.Drawing.Size(142, 34);
+            this.getBLKA_button.Size = new System.Drawing.Size(106, 28);
             this.getBLKA_button.TabIndex = 17;
             this.getBLKA_button.Text = "Get Block A";
             this.getBLKA_button.UseVisualStyleBackColor = true;
             // 
             // getBLKB_button
             // 
-            this.getBLKB_button.Location = new System.Drawing.Point(1312, 108);
+            this.getBLKB_button.Location = new System.Drawing.Point(1076, 88);
+            this.getBLKB_button.Margin = new System.Windows.Forms.Padding(2);
             this.getBLKB_button.Name = "getBLKB_button";
-            this.getBLKB_button.Size = new System.Drawing.Size(142, 34);
+            this.getBLKB_button.Size = new System.Drawing.Size(106, 28);
             this.getBLKB_button.TabIndex = 25;
             this.getBLKB_button.Text = "Get Block B";
             this.getBLKB_button.UseVisualStyleBackColor = true;
             // 
             // getBLKC_button
             // 
-            this.getBLKC_button.Location = new System.Drawing.Point(1312, 151);
+            this.getBLKC_button.Location = new System.Drawing.Point(1076, 123);
+            this.getBLKC_button.Margin = new System.Windows.Forms.Padding(2);
             this.getBLKC_button.Name = "getBLKC_button";
-            this.getBLKC_button.Size = new System.Drawing.Size(142, 34);
+            this.getBLKC_button.Size = new System.Drawing.Size(106, 28);
             this.getBLKC_button.TabIndex = 26;
             this.getBLKC_button.Text = "Get Block C";
             this.getBLKC_button.UseVisualStyleBackColor = true;
@@ -703,9 +773,10 @@
             // 
             // getBLKD_button
             // 
-            this.getBLKD_button.Location = new System.Drawing.Point(1312, 193);
+            this.getBLKD_button.Location = new System.Drawing.Point(1076, 157);
+            this.getBLKD_button.Margin = new System.Windows.Forms.Padding(2);
             this.getBLKD_button.Name = "getBLKD_button";
-            this.getBLKD_button.Size = new System.Drawing.Size(142, 34);
+            this.getBLKD_button.Size = new System.Drawing.Size(106, 28);
             this.getBLKD_button.TabIndex = 27;
             this.getBLKD_button.Text = "Get Block D";
             this.getBLKD_button.UseVisualStyleBackColor = true;
@@ -713,9 +784,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1503, 837);
+            this.ClientSize = new System.Drawing.Size(1252, 680);
             this.Controls.Add(this.getBLKD_button);
             this.Controls.Add(this.getBLKC_button);
             this.Controls.Add(this.getBLKB_button);
@@ -727,6 +798,7 @@
             this.Controls.Add(this.TxRxEvents_lab);
             this.Controls.Add(this.RDA_groupbox);
             this.Controls.Add(this.COM_groupbox);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "RDA5807M Control/View";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -787,24 +859,24 @@
         private System.Windows.Forms.Button reset_button;
         private System.Windows.Forms.Button init_button;
         private System.Windows.Forms.Button mute_button;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.VScrollBar vScrollBar5;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.VScrollBar vScrollBar4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.VScrollBar vScrollBar3;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.VScrollBar vScrollBar2;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label OFF_lab;
+        private System.Windows.Forms.Label ON_lab;
+        private System.Windows.Forms.Label PeriodRead_lab;
+        private System.Windows.Forms.Label chst_val_lab;
+        private System.Windows.Forms.Label stro_val_lab;
+        private System.Windows.Forms.Label rdsr_val_lab;
+        private System.Windows.Forms.Label rdss_val_lab;
+        private System.Windows.Forms.Label rssi_val_lab;
+        private System.Windows.Forms.VScrollBar chs_scrollbar;
+        private System.Windows.Forms.Button chst_button;
+        private System.Windows.Forms.VScrollBar str_scrollbar;
+        private System.Windows.Forms.Button stro_button;
+        private System.Windows.Forms.VScrollBar rdsr_scrollbar;
+        private System.Windows.Forms.Button rdsr_button;
+        private System.Windows.Forms.Button rdss_button;
+        private System.Windows.Forms.VScrollBar rds_scrollbar;
+        private System.Windows.Forms.VScrollBar rssi_scrollbar;
+        private System.Windows.Forms.Button rssi_button;
     }
 }
 

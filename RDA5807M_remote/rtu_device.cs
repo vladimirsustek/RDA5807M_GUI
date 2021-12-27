@@ -8,7 +8,7 @@ using System.IO.Ports;
 
 namespace RDA5807M_remote
 {
-    public class COMDevice : SerialPort
+    public class rtu_device : SerialPort
     {
         public Parity ParseParity(string strParity)
         {

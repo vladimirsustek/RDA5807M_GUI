@@ -49,10 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RDA5807M.cs">
+    <Compile Include="rtu_rda5807m.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="COMDevice.cs">
+    <Compile Include="rtu_device.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
