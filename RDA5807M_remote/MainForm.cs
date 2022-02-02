@@ -25,8 +25,6 @@ namespace RDA5807M_remote
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string[] ports = SerialPort.GetPortNames();
-            this.COM_combobox.Items.AddRange(ports);
             this.baudrate_combobox.SelectedIndex = this.baudrate_combobox.FindStringExact("57600");
             this.stopbits_combobox.SelectedIndex = this.stopbits_combobox.FindStringExact("One");
             this.parity_combobox.SelectedIndex = this.parity_combobox.FindStringExact("None");
@@ -84,6 +82,7 @@ namespace RDA5807M_remote
             }
 
             string[] ports = SerialPort.GetPortNames();
+            this.COM_combobox.Items.Clear();
             this.COM_combobox.Items.AddRange(ports);
         }
 
